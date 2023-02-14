@@ -17,6 +17,7 @@ def preprocess(csv, scaler):
     df.loc[df.Direction == 'Down', 'Direction'] = 1
     df.loc[df.Direction == 'Right', 'Direction'] = 2
     df.loc[df.Direction == 'Left', 'Direction'] = 3
+    df.Direction = df.Direction.astype('int')
     df.drop_duplicates(inplace=True)
     for col in df.columns:
         df.loc[df[col].isna(), col] = df[col].mean()
